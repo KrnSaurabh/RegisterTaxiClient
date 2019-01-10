@@ -8,6 +8,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 
 import com.miamioh.registertaxiclient.config.params.KafkaProducerConfigParams;
 import com.miamioh.registertaxiclient.model.request.Taxi;
@@ -24,6 +25,11 @@ public class KafkaProducerConfig {
     public ProducerFactory<String, Taxi> producerFactory() {
         return new DefaultKafkaProducerFactory<>(kafkaProducerConfigParams.getProducerConfig());
     }
+	
+	/*@Bean
+    public StringJsonMessageConverter jsonConverter() {
+        return new StringJsonMessageConverter();
+    }*/
  
     @Bean
     public KafkaTemplate<String, Taxi> kafkaTemplate() {
